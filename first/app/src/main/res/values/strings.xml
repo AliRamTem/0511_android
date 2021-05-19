@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">firstApp</string>
+    <string name="correct">Правильно!</string>
+    <string name="incorrect">Не правильно!</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="question0">Земля круглая?</string>
+    <string name="question1">Солнце крутится вокруг земли?</string>
+    <string name="question2">Арбуз является фруктом?</string>
+    <string name="question3">На самом деле Наполеон Бонапарт был ростом около 180 сантиметров.</string>
+    <string name="question4">В 2014 году Аральское море полностью высохло.</string>
+    <string name="question5">Первую железную дорогу общественного пользования, рассчитанную на паровозы, построили в Англии.</string>
+    <string name="answer">Ваши ответы</string>
+    <string name="rightAnswer">Показать ответ</string>
+    <string name="start_new">Начать заново</string>
+</resources>
