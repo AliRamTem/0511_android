@@ -15,10 +15,8 @@ public class UserFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = new User();
-        user.setUserName("USER");
-        user.setUserLastName("USER_LASTNAME");
-        user.setPhone("79850745631");
+        int position = getActivity().getIntent().getIntExtra("position", 1);
+        user = Users.get(getActivity()).getUserList().get(position);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Users {
     private static Users users;
     private SQLiteDatabase database;
     private Context context;
-    private List<String> userList;
+    private List<User> userList;
 
     public static Users get(Context context){
         if (users == null){
@@ -50,14 +50,14 @@ public class Users {
         return new UserCursorWrapper(cursor);
     }
 
-    public List<String> getUserList(){
+    public List<User> getUserList(){
         userList = new ArrayList<>();
         UserCursorWrapper cursorWrapper = queryUsers();
         try{
             cursorWrapper.moveToFirst();
             while (!cursorWrapper.isAfterLast()){
                 User user = cursorWrapper.getUser();
-                userList.add(user.getUserName()+" "+user.getUserLastName());
+                userList.add(user);
                 cursorWrapper.moveToNext();
             }
         }finally {
@@ -69,4 +69,6 @@ public class Users {
         }*/
         return this.userList;
     }
+
+
 }

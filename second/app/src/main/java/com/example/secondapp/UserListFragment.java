@@ -11,8 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class UserListFragment extends Fragment {
     private Button addUser;
@@ -47,19 +50,37 @@ public class UserListFragment extends Fragment {
 
     private void recyclerViewInit(){
         Users users = Users.get(getActivity());
-        List<String> userList = users.getUserList();
-        userAdapter = new UserAdapter(userList);
+        List<User> userList = users.getUserList();
+        List<String> userNameList = new ArrayList<>();
+        for (User user : userList) {
+            userNameList.add(user.getUserName());
+        }
+        userAdapter = new UserAdapter(userNameList);
         recyclerView.setAdapter(userAdapter);
     }
 
     private class UserHolder extends RecyclerView.ViewHolder{
         TextView itemTextView;
+        String userName;
+        int position;
+
         public UserHolder(LayoutInflater inflater, ViewGroup viewGroup) {
             super(inflater.inflate(R.layout.activity_item,viewGroup,false));
             //itemView - текущий layout activity_item
             itemTextView = itemView.findViewById(R.id.itemTextView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Toast.makeText(getActivity(), userName + " - клик!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), UserActivity.class);
+                    intent.putExtra("position", position);
+                    startActivity(intent);
+                }
+            });
         }
-        public void bind(String userName){
+        public void bind(String userName, int position){
+            this.userName = userName;
+            this.position = position;
             itemTextView.setText(userName);
         }
     }
@@ -80,7 +101,7 @@ public class UserListFragment extends Fragment {
         @Override
         public void onBindViewHolder(UserHolder userHolder, int position) {
             String userName = userList.get(position);
-            userHolder.bind(userName);
+            userHolder.bind(userName, position);
         }
 
         @Override
