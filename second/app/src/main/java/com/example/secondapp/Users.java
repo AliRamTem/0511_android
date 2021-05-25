@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.secondapp.database.UserBaseHelper;
 import com.example.secondapp.database.UserDbSchema;
@@ -34,6 +35,19 @@ public class Users {
     public void addUser(User user){ // Метод добавления пользователя в БД
         ContentValues values = getContentValues(user);
         database.insert(UserDbSchema.UserTable.NAME,null,values);
+    }
+
+    public void editUser(User user) {
+        Log.d("DEBUG", "Users.editUser() start update");
+        ContentValues values = getContentValues(user);
+        String where = String.format("%s = '%s'", UserDbSchema.UserTable.Cols.UUID, user.getUuid().toString());
+        database.update(UserDbSchema.UserTable.NAME, values,  where, null);
+        Log.d("DEBUG", "Users.editUser() finish update");
+    }
+
+    public void deleteUser(String uuid) {
+        String where = String.format("%s = '%s'", UserDbSchema.UserTable.Cols.UUID, uuid);
+        database.delete(UserDbSchema.UserTable.NAME, where, null);
     }
 
     private static ContentValues getContentValues(User user){

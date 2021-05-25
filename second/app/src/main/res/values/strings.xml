@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">secondApp</string>
+    <string name="edit">Редактировать</string>
+    <string name="delete">Удалить</string>
+    <string name="add_user_form">Форма добавления пользователя</string>
+    <string name="name">Имя</string>
+    <string name="lastname">Фамилия</string>
+    <string name="phone">Телефон</string>
+    <string name="add_user">Добавить пользователя</string>
+    <string name="edit_users_form">Форма редактирования пользователя</string>
+    <string name="update_user">Обновить пользователя</string>
+    <string name="back">На главную</string>
 </resources>

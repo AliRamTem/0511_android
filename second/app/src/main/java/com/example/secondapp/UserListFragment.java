@@ -51,6 +51,7 @@ public class UserListFragment extends Fragment {
     private void recyclerViewInit(){
         Users users = Users.get(getActivity());
         List<User> userList = users.getUserList();
+
         List<String> userNameList = new ArrayList<>();
         for (User user : userList) {
             userNameList.add(user.getUserName());
@@ -94,7 +95,7 @@ public class UserListFragment extends Fragment {
         @Override
         public UserHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
             // inflater - наполнитель
-            LayoutInflater inflater = LayoutInflater.from(getActivity());
+            LayoutInflater inflater = LayoutInflater.from(getContext());
             return new UserHolder(inflater,viewGroup);
         }
 
