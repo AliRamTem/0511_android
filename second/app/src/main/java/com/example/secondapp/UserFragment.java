@@ -19,7 +19,8 @@ public class UserFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        position = getActivity().getIntent().getIntExtra("position", 1);
+        //position = getActivity().getIntent().getIntExtra("position", 1);
+        position = getArguments().getInt("position");
         user = Users.get(getActivity()).getUserList().get(position);
     }
 
